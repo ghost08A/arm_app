@@ -13,46 +13,116 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           useMaterial3: true, appBarTheme: AppBarTheme(color: Colors.blue)),
-          //colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(221, 236, 15, 15)),
+      //colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(221, 236, 15, 15)),
       home: Scaffold(
-          appBar: AppBar(
-            centerTitle: true,
-            title: Image.asset('assets/images/peaLOGO.png',width: 120,),
-            //title: Text('Arm app'),
-            // leading: IconButton(onPressed: (){debugPrint('clicked menu buttton');}, icon:const Icon(Icons.menu)),
-            // actions: [IconButton(onPressed: (){debugPrint('clicked menu buttton');}, icon:const Icon(Icons.safety_check)),
-            //           IconButton(onPressed: (){debugPrint('clicked menu buttton');}, icon:const Icon(Icons.offline_bolt)),
-            //           ],
-           ),
-          body: Column(
-            children: [
-              Image.asset('assets/images/PEA1.jpg',),
-              const Text("ขอบคุณที้ใช้บริการ",style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-              const Text("เรายินดีที่ได้เป็นส่วนหนึ่งในการเดินทางของคุณ",style: TextStyle(fontSize: 20,)),   
-              
-              Row(mainAxisAlignment:  MainAxisAlignment.start ,
-                children: [
-                  const Text("สรุปรายละเอียด",style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-              //   ElevatedButton(onPressed: (){debugPrint('clicked buttton');}, child: const Text('OK',style: TextStyle(fontSize: 20),)),
-              // IconButton(onPressed:(){},
-              // icon: Icon(Icons.favorite),iconSize: 40,)
-              ],),
-              Row(mainAxisAlignment:  MainAxisAlignment.start,
-              children: [
-              //ElevatedButton(onPressed: (){debugPrint('clicked buttton');}, child: const Text('OK',style: TextStyle(fontSize: 20),)),
-              IconButton(onPressed:(){},
-              icon: Icon(Icons.calendar_month),iconSize: 40,),
-              Text("วันที่ขับรถ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
-              Text("9/12/2567",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
-              
-              ],)
-              
-            ],
-            
-    
+        appBar: AppBar(
+          centerTitle: true,
+          title: Image.asset(
+            'assets/images/peaLOGO.png',
+            width: 120,
           ),
-          floatingActionButton: FloatingActionButton(onPressed: (){debugPrint('FAB pressed');}, child:const Icon(Icons.shopping_cart),),
-          
+          //title: Text('Arm app'),
+          // leading: IconButton(onPressed: (){debugPrint('clicked menu buttton');}, icon:const Icon(Icons.menu)),
+          // actions: [IconButton(onPressed: (){debugPrint('clicked menu buttton');}, icon:const Icon(Icons.safety_check)),
+          //           IconButton(onPressed: (){debugPrint('clicked menu buttton');}, icon:const Icon(Icons.offline_bolt)),
+          //           ],
+        ),
+        body: Column(
+          children: [
+            Image.asset(
+              'assets/images/PEA1.jpg',
+            ),
+            const Text("ขอบคุณที้ใช้บริการ",
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+            const Text("เรายินดีที่ได้เป็นส่วนหนึ่งในการเดินทางของคุณ",
+                style: TextStyle(
+                  fontSize: 20,
+                )),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const Text("สรุปรายละเอียด",
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                //   ElevatedButton(onPressed: (){debugPrint('clicked buttton');}, child: const Text('OK',style: TextStyle(fontSize: 20),)),
+                // IconButton(onPressed:(){},
+                // icon: Icon(Icons.favorite),iconSize: 40,)
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                //ElevatedButton(onPressed: (){debugPrint('clicked buttton');}, child: const Text('OK',style: TextStyle(fontSize: 20),)),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.calendar_month),
+                  iconSize: 40,
+                ),
+                Text(
+                  "วันที่ชาร์จ",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+                Spacer(),
+                Text(
+                  "9/12/2567",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.ev_station),
+                    iconSize: 40),
+                Text("สถานีชาร์จ",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                Spacer(),
+                Text("PEA VOLIA บางจาก",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                IconButton(
+                    onPressed: () {}, icon: Icon(Icons.bolt), iconSize: 40),
+                Text("ประเภทหัวชาร์จ",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                Spacer(),
+                Text("CCS2",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.access_time),
+                    iconSize: 40),
+                Text("ระยะเวลาการชาร์จ",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                Spacer(),
+                Text("00:12:32",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+              ],
+            ),
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            debugPrint('FAB pressed');
+          },
+          child: const Icon(Icons.shopping_cart),
+        ),
       ),
     );
   }
