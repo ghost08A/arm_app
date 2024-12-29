@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Detall extends StatefulWidget {
   const Detall({super.key});
@@ -8,21 +9,11 @@ class Detall extends StatefulWidget {
 }
 
 class _DetallState extends State<Detall> {
-  String _output_Current = '';
-  String _output_Target = '';
-  String _output_Chg_rate = '';
-  String _output_Volt = '';
-  String _output_W_chg = '';
-  String _output_Chg_time = '';
-  String _output_Bat_kwh = '';
-  String _output_Eff = '';
+  String Charging_time = '';
 
-  final Current = TextEditingController();
   final Target = TextEditingController();
   final Chg_rate = TextEditingController();
   final Volt = TextEditingController();
-  final W_chg = TextEditingController();
-  final Chg_time = TextEditingController();
   final Bat_kwh = TextEditingController();
   final Eff = TextEditingController();
 
@@ -94,11 +85,10 @@ class _DetallState extends State<Detall> {
                               fontWeight: FontWeight.bold, fontSize: 20),
                         ),
                         SizedBox(height: 10),
-                        TextField(
-                          controller: Current,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                          ),
+                        Text(
+                          "36",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
                         ),
                       ],
                     ),
@@ -118,10 +108,12 @@ class _DetallState extends State<Detall> {
                               fontWeight: FontWeight.bold, fontSize: 20),
                         ),
                         SizedBox(height: 10),
-                        Text(
-                          "225",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+                        TextField(
+                          controller: Volt,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                          ),
                         ),
                       ],
                     ),
@@ -170,7 +162,7 @@ class _DetallState extends State<Detall> {
                         ),
                         SizedBox(height: 10),
                         Text(
-                          "7.085",
+                          "$Charging_time",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 20),
                         ),
@@ -197,10 +189,12 @@ class _DetallState extends State<Detall> {
                               fontWeight: FontWeight.bold, fontSize: 20),
                         ),
                         SizedBox(height: 10),
-                        Text(
-                          "38.5",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+                        TextField(
+                          controller: Bat_kwh,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                          ),
                         ),
                       ],
                     ),
@@ -220,10 +214,12 @@ class _DetallState extends State<Detall> {
                               fontWeight: FontWeight.bold, fontSize: 20),
                         ),
                         SizedBox(height: 10),
-                        Text(
-                          "0.84",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+                        TextField(
+                          controller: Eff,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                          ),
                         ),
                       ],
                     ),
@@ -248,10 +244,12 @@ class _DetallState extends State<Detall> {
                               fontWeight: FontWeight.bold, fontSize: 20),
                         ),
                         SizedBox(height: 10),
-                        Text(
-                          "100",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+                        TextField(
+                          controller: Target,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                          ),
                         ),
                       ],
                     ),
@@ -266,15 +264,17 @@ class _DetallState extends State<Detall> {
                     child: Column(
                       children: [
                         Text(
-                          "Target SOC%",
+                          "Chg rate A",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 20),
                         ),
                         SizedBox(height: 10),
-                        Text(
-                          "100",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+                        TextField(
+                          controller: Chg_rate,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                          ),
                         ),
                       ],
                     ),
@@ -283,37 +283,51 @@ class _DetallState extends State<Detall> {
               ),
             ],
           ),
-           ElevatedButton(onPressed:(){
-              String input = Current.text;
-              debugPrint('pressed button .. $input');
+          ElevatedButton(
+            onPressed: () {
+              String _Target = Target.text;
+              String _Chg_rate = Chg_rate.text;
+              String _Volt = Volt.text;
+              String _Bat_kwh = Bat_kwh.text;
+              String _Eff = Eff.text;
+
+              double n_Target = double.parse(_Target);
+              double n_Chg_rate = double.parse(_Chg_rate);
+              double n_Volt = double.parse(_Volt);
+              double n_Bat_kwh = double.parse(_Bat_kwh);
+              double n_Eff = double.parse(_Eff);
+
+              double result =
+                  n_Target * n_Bat_kwh / 100 / ((n_Volt * n_Chg_rate) * n_Eff);
+              String _result = result.toStringAsFixed(4);
               setState(() {
-                _output_Current = "$input";
+                Charging_time = "$_result";
               });
-            },child: const Icon(Icons.search),),
-          Card(
+            },
+            child: const Icon(Icons.search),
+          ),
+          /*Card(
             child: Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                 child: Column(
                   children: [
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                          "Chg rate A",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
-                        ),
-                        Spacer(),
-                        Text(
-                          "$_output_Current",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
-                        ),
-                        ]),
+                    Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                      Text(
+                        "Chg rate A",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                      Spacer(),
+                      Text(
+                        "$_output_Current",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                    ]),
                   ],
                 )),
-          ),
+          ),*/
         ]),
       ),
       /* floatingActionButton: FloatingActionButton(
