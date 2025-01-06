@@ -1,7 +1,8 @@
+import 'package:arm_app/display.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatefulWidget {
-  const WelcomePage({super.key});
+  const WelcomePage({super.key,});
 
   @override
   State<WelcomePage> createState() => _WelcomePageState();
@@ -10,7 +11,22 @@ class WelcomePage extends StatefulWidget {
 class _WelcomePageState extends State<WelcomePage> {
   String _output = '';
   final _textController = TextEditingController();
-  final _name = TextEditingController();
+  final age = TextEditingController();
+
+ /* @override
+   void initState(){
+    super.initState();
+    debugPrint('initState');
+    _output = '';
+   }
+  
+
+  @override
+  void dispose(){
+    _textController.dispose();
+    age.dispose();
+    super.dispose;
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +52,29 @@ class _WelcomePageState extends State<WelcomePage> {
                       hintText: ' Enter Name',
                     ),
                   ),
+                  TextField(
+                    controller: age,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Age",
+                      hintText: ' Enter Age',
+                    ),
+                  ),
                   Text('$_output'),
                   ElevatedButton(
                     onPressed: () {
                       String input = _textController.text;
+                      int _age = int.parse(age.text);
                       debugPrint('pressed button .. $input');
-                      setState(() {
+                      /*setState(() {
                         _output = "hi $input kub";
-                      });
+                      });*/
+                      Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (context) => display(
+                        name: input,
+                        age: _age,
+                      )),
+                      (route)=>false);
                     },
                     child: const Icon(Icons.search),
                   )

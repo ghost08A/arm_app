@@ -1,8 +1,9 @@
+import 'package:arm_app/welcome_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class Detall extends StatefulWidget {
-  const Detall({super.key});
+  const Detall({super.key,});
 
   @override
   State<Detall> createState() => _DetallState();
@@ -41,7 +42,7 @@ class _DetallState extends State<Detall> {
               Column(
                 children: [
                   IconButton(
-                      onPressed: () {}, icon: Icon(Icons.home), iconSize: 40),
+                      onPressed: () {Navigator.pushNamed(context,'/welcome');}, icon: Icon(Icons.home), iconSize: 40),
                   Text("Home",
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),

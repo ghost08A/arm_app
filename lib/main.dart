@@ -1,5 +1,6 @@
 import 'package:arm_app/about_page.dart';
 import 'package:arm_app/detall.dart';
+import 'package:arm_app/display.dart';
 import 'package:arm_app/welcome_page.dart';
 import 'package:flutter/material.dart';
 
@@ -14,11 +15,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+
       theme: ThemeData(
           useMaterial3: true, appBarTheme: AppBarTheme(color: Colors.blue)),
       //colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(221, 236, 15, 15)),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => Detall(),
+        '/welcome': (context) => WelcomePage(),
+        '/display': (context) => display(),
 
-      home: Detall(),
+      },
+      //home: Detall(),
     );
   }
 }
