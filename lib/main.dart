@@ -1,6 +1,9 @@
 import 'package:arm_app/about_page.dart';
 import 'package:arm_app/detall.dart';
 import 'package:arm_app/display.dart';
+import 'package:arm_app/http_basic.dart';
+import 'package:arm_app/listView.dart';
+import 'package:arm_app/network_page.dart';
 import 'package:arm_app/welcome_page.dart';
 import 'package:flutter/material.dart';
 
@@ -19,12 +22,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           useMaterial3: true, appBarTheme: AppBarTheme(color: Colors.blue)),
       //colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(221, 236, 15, 15)),
-      initialRoute: '/',
+      initialRoute: '/http_basic',
       routes: {
         '/': (context) => Detall(),
         '/welcome': (context) => WelcomePage(),
         '/display': (context) => display(),
-
+        '/listView': (context) => listView(),
+        '/network_page': (context) => network_page(),
+        '/http_basic': (context) => httpBasic(),
+//_MyFutureBuilderPageState
       },
       //home: Detall(),
     );
