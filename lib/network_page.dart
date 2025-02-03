@@ -18,7 +18,7 @@ class network_pageState extends State<network_page> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.amberAccent,
+          backgroundColor: Colors.blue,
           title: const Text('FutureBuilder Page'),
         ),
         body: Center(
